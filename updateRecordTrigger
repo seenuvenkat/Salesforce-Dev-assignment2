@@ -1,0 +1,26 @@
+trigger updateRecord on Task (after insert,after update)
+{
+    
+    for(Task t:trigger.new)
+    {
+        if(t.status =='Completed')
+        {
+            Account a = [select updateAccount__c from account where id=:t.AccountId];
+                Decimal result =a.updateAccount__c;
+                try
+                {
+                   result++;
+                   a.updateAccount__c=result;
+                   update a;
+                 }
+                 catch (System.NullPointerException e) {
+
+                     e.getMessage();
+
+                     }
+                  
+        }
+       
+    }
+     
+}

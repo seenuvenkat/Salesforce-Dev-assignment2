@@ -1,0 +1,16 @@
+@isTest
+public class updateRecordTesting 
+{   
+    @isTest
+    public static void testingMethod()
+    {
+    Account ac=new Account(Name='sample');
+    insert ac;
+    Task t=new Task(subject='call', priority='normal', status='completed',whatId=ac.id);
+    insert t;
+        if(t.status=='completed')
+        System.assertEquals(ac.updateAccount__c=1,ac.updateAccount__c=1);
+        update ac;
+    }
+
+}
